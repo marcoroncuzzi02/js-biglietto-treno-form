@@ -15,3 +15,31 @@ MILESTONE 3:
 Ora che la logica è funzionante in pagina, possiamo andare a dedicarci allo stile, raffinando la parte di HTML e CSS in modo da renderla esteticamente gradevole.
 Nota:
 Se non vi sentite particolarmente creativi, questa potrebbe essere un’implementazione da seguire per il secondo milestone. Potete scegliere di implementare una soluzione completamente diversa oppure simile, ma in ogni caso cercate di farla vostra. */
+let kilometri = document.getElementById('kilometri')
+let eta = document.getElementById('eta')
+let btn = document.getElementById('btn')
+let form = document.querySelector('form')
+//dove vado stampare il value
+let kilometriInseriti = document.getElementById('kilometri-inseriti')
+let etaInserita = document.getElementById('eta-inserita')
+//stampo i value
+form.addEventListener('click', function(){
+    kilometriInseriti.innerHTML = kilometri.value
+    etaInserita.innerHTML = eta.value
+})
+//calcolo del prezzo
+let prezzo = kilometri.value * 0.21
+console.log(prezzo)
+let discount = 0;
+
+// pongo le condizioni per lo sconto del prezzo del biglietto
+
+if (eta.value < 18){
+    discount = prezzo * 0.20   
+}
+else if (eta.value > 65){
+    discount = prezzo * 0.40
+}
+
+prezzo = prezzo - discount
+console.log(`il prezzo è di ${prezzo}$`);
