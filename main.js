@@ -25,18 +25,20 @@ const nomeCognome = document.getElementById('nomeCognome')
 //dove vado stampare il value
 
 const nomeCognomeInseriti = document.getElementById('nome-cognome-inseriti')
-const kilometriInseriti = document.getElementById('kilometri-inseriti')
-const etaInserita = document.getElementById('eta-inserita')
+let kilometriInseriti = document.getElementById('kilometri-inseriti')
+let etaInserita = document.getElementById('eta-inserita')
 const numeroCarrozza = document.getElementById('numero-carrozza')
 const codiceBiglietto = document.getElementById('codice-biglietto')
 const prezzoBiglietto = document.getElementById('prezzo-biglietto')
+let display = document.getElementById('display')
 
 //stampo i value
 
 btn.addEventListener('click', function(){
+    display.style.display = 'block'
     nomeCognomeInseriti.innerHTML = nomeCognome.value
-    kilometriInseriti.innerHTML = kilometri.value
-    etaInserita.innerHTML = eta.value
+    kilometriInseriti = kilometri.value
+    etaInserita= eta.value
     numeroCarrozza.innerHTML = Math.floor((Math.random() * 10) + 1);
     codiceBiglietto.innerHTML = Math.floor((Math.random() * 999999) + 111111);
 
