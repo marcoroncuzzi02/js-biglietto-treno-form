@@ -15,31 +15,45 @@ MILESTONE 3:
 Ora che la logica è funzionante in pagina, possiamo andare a dedicarci allo stile, raffinando la parte di HTML e CSS in modo da renderla esteticamente gradevole.
 Nota:
 Se non vi sentite particolarmente creativi, questa potrebbe essere un’implementazione da seguire per il secondo milestone. Potete scegliere di implementare una soluzione completamente diversa oppure simile, ma in ogni caso cercate di farla vostra. */
-let kilometri = document.getElementById('kilometri')
-let eta = document.getElementById('eta')
-let btn = document.getElementById('btn')
-let form = document.querySelector('form')
+
+
+const kilometri = document.getElementById('kilometri')
+const eta = document.getElementById('eta')
+const btn = document.getElementById('btn')
+const nomeCognome = document.getElementById('nomeCognome')
+
 //dove vado stampare il value
-let kilometriInseriti = document.getElementById('kilometri-inseriti')
-let etaInserita = document.getElementById('eta-inserita')
+
+const nomeCognomeInseriti = document.getElementById('nome-cognome-inseriti')
+const kilometriInseriti = document.getElementById('kilometri-inseriti')
+const etaInserita = document.getElementById('eta-inserita')
+const numeroCarrozza = document.getElementById('numero-carrozza')
+const codiceBiglietto = document.getElementById('codice-biglietto')
+const prezzoBiglietto = document.getElementById('prezzo-biglietto')
+
 //stampo i value
-form.addEventListener('click', function(){
+
+btn.addEventListener('click', function(){
+    nomeCognomeInseriti.innerHTML = nomeCognome.value
     kilometriInseriti.innerHTML = kilometri.value
     etaInserita.innerHTML = eta.value
+    numeroCarrozza.innerHTML = Math.floor((Math.random() * 10) + 1);
+    codiceBiglietto.innerHTML = Math.floor((Math.random() * 999999) + 111111);
+
+    //calcolo del prezzo
+    let prezzo = kilometri.value * 0.21
+        let discount = 0;
+
+    // pongo le condizioni per lo sconto del prezzo del biglietto
+
+    if (eta.value < 18){
+        discount = prezzo * 0.20   
+    }
+    else if (eta.value > 65){
+        discount = prezzo * 0.40
+    }
+
+    prezzo = prezzo - discount
+    console.log(`il prezzo è di ${prezzo}$`);
+    prezzoBiglietto.innerHTML = `${prezzo.toFixed(2)}$`
 })
-//calcolo del prezzo
-let prezzo = kilometri.value * 0.21
-console.log(prezzo)
-let discount = 0;
-
-// pongo le condizioni per lo sconto del prezzo del biglietto
-
-if (eta.value < 18){
-    discount = prezzo * 0.20   
-}
-else if (eta.value > 65){
-    discount = prezzo * 0.40
-}
-
-prezzo = prezzo - discount
-console.log(`il prezzo è di ${prezzo}$`);
